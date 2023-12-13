@@ -1,0 +1,316 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200;12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Cabin:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Dancing+Script:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,100;0,9..144,200;0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,100;1,9..144,200;1,9..144,300;1,9..144,400;1,9..144,500;1,9..144,600;1,9..144,700;1,9..144,800;1,9..144,900&family=Josefin+Slab:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Martian+Mono:wght@100;200;300;400;500;600;700;800&family=Montagu+Slab:opsz,wght@16..144,100;16..144,200;16..144,300;16..144,400;16..144,500;16..144,600;16..144,700&display=swap');
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --lighter-colour: rgb(101, 101, 101);
+    --darker-colour: rgb(41, 41, 41);
+}
+
+body {
+    padding: 1.125rem;
+    display: grid;
+    place-items: center;
+    place-content: center;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    background: #121232;
+    color: white;
+    gap: 3rem;
+    cursor: none;
+    overflow-x: hidden;
+}
+
+
+.heading {
+    width: 95%;
+    font-size: 6.5rem;
+    line-height: 3.25rem;
+    text-shadow: 0px 10px 40px rgba(255, 255, 255, 0.50);
+    line-height: 92.4%;
+    font-weight: normal;
+}
+
+h2 {font-size: 5rem;}
+h3 {font-size: 3rem; text-align: center;}
+h4 {font-size: 2rem; font-weight: 100;}
+
+.fs-medium {font-size: 4rem;}
+
+*:not(.background-blobs) {z-index: 10;}
+
+.background-blobs {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+}
+
+.blur-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(50px);
+    overflow: hidden;
+}
+
+.blob {
+    position: absolute;
+    width: 20vw;
+    aspect-ratio: 1;
+    z-index: -1;
+    border-radius: 50%;
+    transition: all ease 5s;
+    filter: hue-rotate(250deg);
+}
+
+.cursor {
+    transform: translate(-50%, -50%);
+    width: 2rem;
+    height: 2rem;
+    opacity: 1;
+    pointer-events: none;
+
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+}
+
+section:not(.snake) {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border-radius: 1.125rem;
+    border: 3px white solid;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(50px);
+    background: rgba(255, 255, 255, 0.20)
+}
+
+.learning-objective {
+    padding-block: 2rem;
+    opacity: 0;
+    animation: dissolve-in forwards 1s 5s ease;
+    overflow: hidden;
+}
+
+.cards {
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+}
+
+.cards > div {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    gap: 1rem;
+    place-items: center;
+    opacity: 0;
+}
+
+.cards > div:nth-child(1) {animation: forwards slide-in 1s 6s ease}
+.cards > div:nth-child(2) {animation: forwards slide-in 1s 6.5s ease}
+.cards > div:nth-child(3) {animation: forwards slide-in 1s 7s ease}
+
+.cards > div > img {
+    max-width: 20vw;
+}
+
+.cards > div > p {
+    font-size: 2rem;
+    font-weight: 100;
+    text-align: center;
+}
+
+.snake {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    margin: auto;
+    gap: 1.5rem;
+}
+
+.snake > h1 {
+    grid-column: span 2;
+}
+
+section.snake > * {
+    margin: auto;
+}
+
+.snake-container {
+    position: relative;
+    width: 30vw;
+    height: 30vw;
+    border: 3px solid white;
+    background: rgba(128, 128, 128, 0.61);
+    border-radius: 2.5rem;
+    overflow: hidden;
+}
+
+.player {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.pop-up {
+    position: absolute;
+    padding: 2.5rem;
+    inset: 0;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    font-size: 3rem;
+    text-align: center;
+}
+
+.player > div {
+    transform: scale(0);
+}
+
+.grid {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.snake > h1 {margin-bottom: 2rem;}
+
+section.sign-up {
+    gap: 1rem;
+    padding: 2.5rem 1rem;
+    height: fit-content;
+}
+
+section.sign-up > h1, .snake > h1 {
+    text-align: center;
+}
+
+.scores {
+    border: 3px solid white;
+    border-radius: 2.5rem;
+    overflow: hidden;
+}
+
+.scores > div {
+    background: rgba(128, 128, 128, 0.61);
+    width: 8em;
+    padding: 1.25rem;
+    font-size: 3rem;
+}
+
+.scores > div:nth-child(1) {border-bottom: 3px solid white;}
+
+.input-container {
+    width: 70vw;
+    display: grid;
+    margin-bottom: 3rem;
+    grid-template-columns: 4fr 1fr;
+}
+
+.input-container > input {
+    padding: 1.5rem;
+    height: 5rem;
+    grid-area: 1 / 1 / -1 / -1;
+    border-radius: 1.125rem;
+    font-size: 1.5rem;
+    border: 3px white solid;
+    background: rgba(255, 255, 255, 0.40);
+    outline: none;
+    color: white;
+    font-family: 'Bricolage Grotesque';
+}
+
+.input-container > .extension {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    transform: scale(.91) translateX(3.4%);
+    background: rgba(255, 255, 255, 0.7);
+    color: black;
+    border-radius: 0 1rem 1rem 0;
+}
+
+.extension > span {
+    font-size: 1.5rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+button {
+    color: white;
+    background: rgba(255, 255, 255, 0.20);
+    font-family: inherit;
+    font-size: 1.5rem;
+    margin-top: -3%;
+    padding: .6rem;
+    border-radius: 1.125rem;
+    border: 3px solid white;
+    transition: all 200ms ease;
+}
+
+button:hover {
+    transform: scale(1.1)
+}
+
+@media (max-width: 1800px) {
+    .heading {font-size: 6vw;}
+    h2 {font-size: 5vw;}
+    .fs-medium {font-size: 4vw;}
+    .learning-objective {height: fit-content;}
+    .cards > div > p  {font-size: 1.5rem;}
+    .extension > span { padding: 0 2rem}
+}
+
+@media (max-width: 1200px) {
+    span:not(.font-change > span, .extension > span), .scores > div{
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .cards > div > p {font-size: 1.25rem; width: 90%}
+    span:not(.font-change > span, .extension > span), .scores > div{font-size: 1.5rem;}
+    section.learning-objective {width: 95%}
+    section.snake {width: 70%}
+    .scores > div {width: 100%}
+    section.snake > * {border-radius: 1.125rem;}
+    h4 {font-size: 1.5rem;}
+    .extension > span {font-size: 1.5rem;}
+
+}
+
+@keyframes dissolve-in {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+@keyframes slide-in {
+    0% {transform: translateY(-10%); opacity: 0;}
+    100% {transform: translateY(0%); opacity: 1}
+}
+
+@keyframes colour-bounce {
+    0% {filter: hue-rotate(0deg); transform: scale(0.4);}
+    50% {filter: hue-rotate(10deg); transform: scale(0.9); background: hsl(200, 100%, 50%)}
+    100% {filter: hue-rotate(0deg); transform: scale(0.4);}
+}
+
+
+
