@@ -319,7 +319,7 @@ const scriptURL = 'https://script.google.com/macros/s/AKfycbyhQuFvs33hmgE1cXNmcq
   const form = document.forms[0]
 
   form.addEventListener('submit', e => {
-      alert('Thank You for signing up to the Web Development Club, you will now recieve relevant news and updates in the future')
+    alert('Thank You for signing up to the Web Development Club, you will now recieve relevant news and updates in the future')
     e.preventDefault()
     fetch(scriptURL, { method: 'POST', body: new FormData(form)})
       .then(response => console.log('Success!', response))

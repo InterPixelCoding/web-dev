@@ -124,6 +124,7 @@ section:not(.snake) {
 }
 
 .cards > div > p {
+    width: 80%;
     font-size: 2rem;
     font-weight: 100;
     text-align: center;
@@ -187,7 +188,7 @@ section.snake > * {
 .snake > h1 {margin-bottom: 2rem;}
 
 section.sign-up {
-    gap: 1rem;
+    gap: 2rem;
     padding: 2.5rem 1rem;
     height: fit-content;
 }
@@ -254,11 +255,11 @@ form {
 }
 
 button {
+    margin-top: -1.5rem;
     color: white;
     background: rgba(255, 255, 255, 0.20);
     font-family: inherit;
     font-size: 1.5rem;
-    margin-top: -3%;
     padding: .6rem;
     border-radius: 1.125rem;
     border: 3px solid white;
